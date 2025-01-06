@@ -14,17 +14,16 @@ export default function Testimonials() {
     },
     {
       author: "Mark Johnson",
-      text: "Sulio AI's matching algorithm helped us reach perfect-fit clients. Our conversion rate improved by 28% and we saved 8 hours/week.",
+      text: "Sulio AI&apos;s matching algorithm helped us reach perfect-fit clients. Our conversion rate improved by 28% and we saved 8 hours/week.",
     },
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Auto-advance carousel
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % testimonials.length);
-    }, 5000); // Change slide every 5 seconds
+    }, 5000);
 
     return () => clearInterval(timer);
   }, [testimonials.length]);
@@ -42,7 +41,6 @@ export default function Testimonials() {
   return (
     <div className="w-full max-w-7xl">
       <div className="flex flex-col lg:flex-row items-center justify-between w-full">
-        {/* Left Image - Only on Tablet and Desktop */}
         <div className="hidden lg:block w-1/4 max-w-[200px]">
           <img
             src="/images/1.png"
@@ -51,10 +49,8 @@ export default function Testimonials() {
           />
         </div>
 
-        {/* Testimonial Carousel */}
         <div className="h-[200px] w-full relative">
           <div className="relative h-full rounded-2xl shadow-lg flex flex-col justify-center items-center">
-            {/* Background Image */}
             <div className="absolute inset-0 z-0">
               <img
                 src="/images/2.png"
@@ -63,9 +59,7 @@ export default function Testimonials() {
               />
             </div>
 
-            {/* Carousel Content */}
             <div className="relative z-10 flex-grow flex flex-col justify-between p-4 md:p-6">
-              {/* Navigation Buttons */}
               <button
                 onClick={prevSlide}
                 aria-label="Previous Testimonial"
@@ -107,7 +101,6 @@ export default function Testimonials() {
                 </svg>
               </button>
 
-              {/* Slide Content */}
               <div className="flex-grow flex items-center justify-center overflow-hidden">
                 <div
                   className="flex transition-transform duration-500 ease-in-out"
@@ -118,7 +111,7 @@ export default function Testimonials() {
                       key={index}
                       className="min-w-full px-4 md:px-16 text-center text-sm md:text-base italic text-gray-700 leading-relaxed"
                     >
-                      <p className="mb-3">"{testimonial.text}"</p>
+                      <p className="mb-3">&ldquo;{testimonial.text}&rdquo;</p>
                       <cite className="not-italic font-semibold text-gray-900">
                         - {testimonial.author}
                       </cite>
@@ -127,7 +120,6 @@ export default function Testimonials() {
                 </div>
               </div>
 
-              {/* Slide Indicators */}
               <div className="flex justify-center space-x-2">
                 {testimonials.map((_, index) => (
                   <button
@@ -146,7 +138,6 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* Right Image - Only on Tablet and Desktop */}
         <div className="hidden lg:block w-1/4 max-w-[200px]">
           <img
             src="/images/3.png"
