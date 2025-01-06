@@ -44,7 +44,7 @@ export default function FrequentlyAskedQuestions() {
         </div>
         <div className="md:text-lg text-sm text-black leading-tight tracking-tighter relative right-0 bg-red-500">
           Here are four common questions that artists might ask when using
-          Sulio's AI Chatbot Assistant, along with answers
+          Sulio&apos;s AI Chatbot Assistant, along with answers
         </div>
       </div>
       {/* FAQ Section */}

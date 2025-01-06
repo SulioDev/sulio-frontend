@@ -1,5 +1,5 @@
 import React from "react";
-import { Mail } from "lucide-react";
+import { Mail, Facebook, Instagram } from "lucide-react";
 
 export default function LandingPage() {
   return (
