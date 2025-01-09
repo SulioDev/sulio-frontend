@@ -38,7 +38,7 @@ export default function MarketingStats(){
                 <div className="text-4xl md:text-5xl font-bold mb-3">
                   {stat.number}
                 </div>
-                <p className="text-sm md:text-base text-gray-700 leading-snug">
+                <p className="text-sm md:text-base text-gray-700 leading-snug font-semibold">
                   {stat.text}
                 </p>
               </div>

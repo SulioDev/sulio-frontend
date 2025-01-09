@@ -2,7 +2,6 @@ import { ChevronDown } from 'lucide-react';
 
 export default function PricingComparison() {
   const plans = ['Free', 'Plus', 'Prem', 'Pro'];
-  
   const features = [
     {
       name: 'Auto-replies',
@@ -124,7 +123,7 @@ export default function PricingComparison() {
         </table>
       </div>
 
-      <div className="bg-black text-white w-full mt-12 p-8 rounded-lg text-center">
+      <div className="bg-gradient-to-r from-gray-900 to-black text-white w-full mt-12 p-8 rounded-lg text-center">
         <h2 className="text-2xl font-bold mb-4">
           The all-in-one solution for artists to elevate their business with AI
         </h2>

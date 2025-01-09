@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <div className="hero min-h-screen md:px-2 snap-y snap-mandatory flex justify-start items-start">
+    <div className="hero min-h-screen md:px-2 snap-y snap-mandatory flex justify-around items-center">
       <div className="hero-content gap-16 flex-col lg:flex-row justify-around">
         <div className="flex flex-col justify-start">
           <div className="text-left px-4">

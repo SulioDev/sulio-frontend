@@ -66,7 +66,7 @@ export default function Page() {
 
   return (
     <div className="bg-white text-black flex flex-col min-h-screen">
-      <div className="bg-black text-white py-12 px-4 text-center">
+      <div className="bg-gradient-to-l from-gray-900 to-black text-white py-12 px-4 text-center">
         <div className="max-w-4xl mx-auto">
           <div className="bg-[#2823ff] inline-block text-lg rounded-3xl py-1 px-6 mb-4">
             Pricing
