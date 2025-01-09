@@ -48,7 +48,7 @@ export default function VideoIntroduction() {
                 Artist AI Chatbot
               </h2>
               <p className="text-base font-medium">
-                Meet Sulio Art's all-in-one product experience AI Chatbot,
+                Meet Sulio Art&apos; all-in-one product experience AI Chatbot,
                 enhanced with artificial intelligence.
               </p>
             </div>
