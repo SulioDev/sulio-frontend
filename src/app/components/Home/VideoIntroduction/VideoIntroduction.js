@@ -8,7 +8,7 @@ export default function VideoIntroduction() {
         <div className="grid grid-cols-1 md:grid-cols-12 items-center relative z-10">
           <div className="md:col-span-8 md:p-8">
             <h1 className="text-[24px] pt-5 md:pt-0 lg:pt-0  md:text-2xl lg:text-3xl font-bold text-black leading-tight tracking-tighter">
-              People won't be replaced by AI, but by those who use it.
+              People won&apos;t be replaced by AI, but by those who use it.
             </h1>
           </div>
         </div>
@@ -55,7 +55,7 @@ export default function VideoIntroduction() {
                 Artist AI Chatbot
               </h2>
               <p className="text-base font-medium">
-                Meet Sulio Art's all-in-one product experience AI Chatbot,
+                Meet Sulio Art&apos;s all-in-one product experience AI Chatbot,
                 enhanced with artificial intelligence.
               </p>
             </div>
