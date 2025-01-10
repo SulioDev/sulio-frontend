@@ -68,6 +68,7 @@ export default function VideoIntroduction() {
                   <video
                     className="w-full h-full object-cover"
                     controls
+                    poster="/images/video-thumbnail.png"
                   >
                     <source
                       src="/images/introduction-video.mp4"
@@ -80,6 +81,7 @@ export default function VideoIntroduction() {
                 <video
                   className="hidden md:block w-full h-full object-cover"
                   controls
+                  poster="/images/video-thumbnail.png"
                 >
                   <source
                     src="/images/introduction-video.mp4"

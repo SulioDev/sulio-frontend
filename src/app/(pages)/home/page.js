@@ -1,9 +1,9 @@
-import LandingPage from "@/app/components/Home/FinalCallToActionSection/LandingPage";
-import FAQSection from "@/app/components/Home/FrequentlyAskedQuestionsSection/FAQSection";
-import Hero from "@/app/components/Home/HeroSection/Hero";
-import ProductDisplaySection from "@/app/components/Home/ProductDisplaySection/ProductDisplay";
-import MarketingStats from "@/app/components/Home/TestimonialsSection/MarketingStats";
-import VideoIntroduction from "@/app/components/Home/VideoIntroduction/VideoIntroduction";
+import LandingPage from "@/components/Home/FinalCallToActionSection/LandingPage";
+import FAQSection from "@/components/Home/FrequentlyAskedQuestionsSection/FAQSection";
+import Hero from "@/components/Home/HeroSection/Hero";
+import ProductDisplaySection from "@/components/Home/ProductDisplaySection/ProductDisplay";
+import MarketingStats from "@/components/Home/TestimonialsSection/MarketingStats";
+import VideoIntroduction from "@/components/Home/VideoIntroduction/VideoIntroduction";
 
 export default function Home() {
   return (

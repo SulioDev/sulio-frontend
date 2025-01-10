@@ -1,5 +1,5 @@
 import { ArrowRight } from 'lucide-react';
-import PricingComparison from '@/app/components/Pricing/PricingComparison';
+import PricingComparison from '@/components/Pricing/PricingComparison';
 
 export default function Page() {
   const plansTitle = ["Free", "Plus", "Prem", "Pro"];
