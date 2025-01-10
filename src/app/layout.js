@@ -1,4 +1,5 @@
 import Navbar from "../components/Home/Navbar/Navbar";
+import { sora } from './fonts'
 import './globals.css';
 
 export const metadata = {
@@ -9,7 +10,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-gradient-to-l from-black/50 to-black text-white">
+      <body className={`bg-gradient-to-l from-black/50 to-black text-white ${sora.variable} font-sans`}>
         <Navbar/>
         {children}
       </body>
