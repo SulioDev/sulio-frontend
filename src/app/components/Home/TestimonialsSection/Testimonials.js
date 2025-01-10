@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Testimonials() {
   const testimonials = [
@@ -14,7 +15,7 @@ export default function Testimonials() {
     },
     {
       author: "Mark Johnson",
-      text: "Sulio AI&apos;s matching algorithm helped us reach perfect-fit clients. Our conversion rate improved by 28% and we saved 8 hours/week.",
+      text: "Sulio AI's matching algorithm helped us reach perfect-fit clients. Our conversion rate improved by 28% and we saved 8 hours/week.",
     },
   ];
 
@@ -41,29 +42,36 @@ export default function Testimonials() {
   return (
     <div className="w-full max-w-7xl">
       <div className="flex flex-col lg:flex-row items-center justify-between w-full">
-        <div className="hidden lg:block w-1/4 max-w-[200px]">
-          <img
+        <div className="hidden lg:block w-1/4 max-w-[200px] relative aspect-square">
+          <Image
             src="/images/1.png"
             alt="Testimonial background left"
-            className="w-full h-auto object-contain"
+            fill
+            sizes="(max-width: 1024px) 0vw, 200px"
+            className="object-contain"
+            priority
           />
         </div>
 
         <div className="h-[200px] w-full relative">
           <div className="relative h-full rounded-2xl shadow-lg flex flex-col justify-center items-center">
-            <div className="absolute inset-0 z-0">
-              <img
+            <div className="absolute inset-0 z-0 rounded-2xl overflow-hidden">
+              <Image
                 src="/images/2.png"
                 alt="Testimonial background"
-                className="w-full h-full object-cover"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 70vw, 50vw"
+                className="object-cover"
+                priority
+                quality={90}
               />
             </div>
 
-            <div className="relative z-10 flex-grow flex flex-col justify-between p-4 md:p-6">
+            <div className="relative z-10 flex-grow flex flex-col justify-between p-4 md:p-6 w-full">
               <button
                 onClick={prevSlide}
                 aria-label="Previous Testimonial"
-                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-gray-100 rounded-full p-2 shadow-md z-20"
+                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-gray-100 rounded-full p-2 shadow-md z-20 transition-colors"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +91,7 @@ export default function Testimonials() {
               <button
                 onClick={nextSlide}
                 aria-label="Next Testimonial"
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-gray-100 rounded-full p-2 shadow-md z-20"
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-gray-100 rounded-full p-2 shadow-md z-20 transition-colors"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -103,7 +111,7 @@ export default function Testimonials() {
 
               <div className="flex-grow flex items-center justify-center overflow-hidden">
                 <div
-                  className="flex transition-transform duration-500 ease-in-out"
+                  className="flex transition-transform duration-500 ease-in-out w-full"
                   style={{ transform: `translateX(-${currentSlide * 100}%)` }}
                 >
                   {testimonials.map((testimonial, index) => (
@@ -138,11 +146,14 @@ export default function Testimonials() {
           </div>
         </div>
 
-        <div className="hidden lg:block w-1/4 max-w-[200px]">
-          <img
+        <div className="hidden lg:block w-1/4 max-w-[200px] relative aspect-square">
+          <Image
             src="/images/3.png"
             alt="Testimonial background right"
-            className="w-full h-auto object-contain"
+            fill
+            sizes="(max-width: 1024px) 0vw, 200px"
+            className="object-contain"
+            priority
           />
         </div>
       </div>

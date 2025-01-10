@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function VideoIntroduction() {
   return (
     <div className="relative h-screen min-h-screen overflow-hidden">
@@ -14,9 +16,11 @@ export default function VideoIntroduction() {
         {/* GIF Overlay - hidden on mobile */}
         <div className="hidden md:block absolute right-0 top-0 w-[330px] overflow-visible">
           <div className="relative w-full">
-            <img
+            <Image
               src="/images/section4Overlay.gif"
               alt="Overlay animation"
+              width={330}
+              height={330}
               className="absolute top-0 right-0 w-full h-auto max-w-none"
               style={{
                 transform: "scale(1.2)",
@@ -28,9 +32,11 @@ export default function VideoIntroduction() {
 
         {/* Mobile-only decorative icons */}
         <div className="absolute right-0 top-[52%] md:hidden">
-          <img
+          <Image
             src="/images/section4overlay.gif"
             alt="Decorative icons"
+            width={192}  // w-48 equals 192px
+            height={192}
             className="w-48"
           />
         </div>
@@ -38,6 +44,7 @@ export default function VideoIntroduction() {
 
       {/* Main Card Section */}
       <div className="container mx-auto p-4 pb-8 md:h-full z-0">
+        {/* Rest of your code remains exactly the same */}
         <div className="rounded-3xl border-2 border-[#b49494] overflow-hidden md:text-inherit py-10 md:py-0">
           <div className="grid grid-cols-1 md:grid-cols-12 h-full">
             {/* Product Info - Shown first on mobile */}

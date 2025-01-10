@@ -1,23 +1,28 @@
 import React from "react";
 import { Mail, Facebook, Instagram } from "lucide-react";
+import Image from 'next/image';
 
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white relative overflow-hidden flex flex-col items-center">
       {/* Top Image */}
       <div className="absolute top-0 right-0 w-full sm:w-2/3 md:w-1/2">
-        <img
+        <Image
           src="/images/FinalCallToAction1.gif"
           alt="Decorative top"
+          width={800}
+          height={600}
           className="w-full h-auto object-contain"
         />
       </div>
 
       {/* Bottom Image */}
       <div className="absolute bottom-0 left-0 w-full sm:w-2/3 md:w-1/2">
-        <img
+        <Image
           src="/images/FinalCallToAction2.gif"
           alt="Decorative bottom"
+          width={800}
+          height={600}
           className="w-full h-auto object-contain"
         />
       </div>

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 
 function debounce(func, wait) {
     let timeout;
@@ -54,15 +55,21 @@ function Section({ title, description, features, color, imageSrc }) {
                     A Seamless Creative Workflow Powered by AI
                 </h1>
                 {/* Mobile Layout */}
-                <div
-                    className="flex h-full flex-col md:hidden px-4 space-y-4 relative object-cover"
-                    style={{
-                        backgroundImage: `url(${imageSrc})`,
-                        backgroundPosition: "center",
-                        backgroundSize: "cover",
-                    }}
-                >
-                    <div className="absolute inset-0 bg-black backdrop-blur-sm -z-10" />
+                <div className="flex h-full flex-col md:hidden px-4 space-y-4 relative">
+                    <div className="absolute inset-0 -z-10">
+                        <div className="relative w-full h-full">
+                            <Image
+                                src={imageSrc}
+                                alt={title}
+                                fill
+                                priority
+                                className="object-cover"
+                                sizes="100vw"
+                                quality={90}
+                            />
+                            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+                        </div>
+                    </div>
                     <div className="bg-white rounded-[32px] p-6 space-y-4">
                         <div className={`${bgColors[color]} rounded-full px-6 py-3 mx-auto max-w-[280px]`}>
                             <h2 className="text-white text-lg text-center font-semibold">{title}</h2>
@@ -87,8 +94,16 @@ function Section({ title, description, features, color, imageSrc }) {
                             <div className="h-full flex items-center">
                                 <FeatureList features={features} color={color} />
                             </div>
-                            <div className="h-full">
-                                <img src={imageSrc || "/placeholder.svg?height=320&width=400"} alt={title} className="w-full h-full object-cover" />
+                            <div className="relative h-full">
+                                <Image
+                                    src={imageSrc}
+                                    alt={title}
+                                    fill
+                                    priority
+                                    className="object-cover"
+                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                    quality={90}
+                                />
                             </div>
                         </div>
                     </div>
@@ -100,7 +115,6 @@ function Section({ title, description, features, color, imageSrc }) {
 
 export default function ProductDisplaySection() {
     const containerRef = useRef(null);
-    const scrollRef = useRef(null);
     const [currentSection, setCurrentSection] = useState(0);
     const [isTransitioning, setIsTransitioning] = useState(false);
     const lastScrollTime = useRef(Date.now());
@@ -183,24 +197,18 @@ export default function ProductDisplaySection() {
 };
 
 useEffect(() => {
-    const handleScroll = () => {
-        const now = Date.now();
-        if (now - lastScrollTime.current < 50) return;
+    const handleScroll = debounce(() => {
         const scrollPosition = window.scrollY;
         const viewportHeight = window.innerHeight;
         const sectionIndex = Math.round(scrollPosition / viewportHeight);
 
         if (sectionIndex !== currentSection && sectionIndex >= 0 && sectionIndex < sections.length) {
-            lastScrollTime.current = now;
             handleSectionChange(sectionIndex);
         }
-    };
+    }, 50);
 
-    const handleWheel = (e) => {
+    const handleWheel = debounce((e) => {
         if (isTransitioning) return;
-
-        const now = Date.now();
-        if (now - lastScrollTime.current < 100) return;
 
         const direction = e.deltaY > 0 ? 1 : -1;
         const newSection = Math.max(0, Math.min(sections.length - 1, currentSection + direction));
@@ -208,7 +216,7 @@ useEffect(() => {
         if (newSection !== currentSection) {
             handleSectionChange(newSection);
         }
-    };
+    }, 100);
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('wheel', handleWheel, { passive: true });
@@ -224,13 +232,17 @@ return (
     <div ref={containerRef} className="relative" style={{ height: `${sections.length * 100}vh` }}>
         <div className="sticky top-0 h-screen overflow-hidden">
             {sections.map((section, index) => (
-                <div key={index}
-                     className={`h-screen w-full absolute top-0 left-0 transition-all duration-700 ease-in-out ${isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"}`}
-                     style={{
-                         opacity: currentSection === index ? 1 : 0,
-                         transform: `scale(${currentSection === index ? 1 : 0.95})`,
-                         pointerEvents: currentSection === index ? "auto" : "none",
-                     }}>
+                <div
+                    key={index}
+                    className={`h-screen w-full absolute top-0 left-0 transition-all duration-700 ease-in-out ${
+                        isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"
+                    }`}
+                    style={{
+                        opacity: currentSection === index ? 1 : 0,
+                        transform: `scale(${currentSection === index ? 1 : 0.95})`,
+                        pointerEvents: currentSection === index ? "auto" : "none",
+                    }}
+                >
                     <Section {...section} />
                 </div>
             ))}
