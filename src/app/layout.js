@@ -10,7 +10,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`bg-gradient-to-l from-black/50 to-black text-white ${sora.variable} font-sans`}>
+      <body className={`bg-black text-white ${sora.variable} font-sans`}>
         <Navbar/>
         {children}
       </body>
