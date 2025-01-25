@@ -3,124 +3,138 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
 function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
     };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
 }
 
 function FeatureList({ features, color = "blue" }) {
-    const diamondColors = {
-        blue: "text-blue-600",
-        purple: "text-purple-600",
-        yellow: "text-yellow-500",
-        orange: "text-orange-500",
-        green: "text-green-500",
-    };
+  const diamondColors = {
+    blue: "text-blue-600",
+    purple: "text-purple-600",
+    yellow: "text-yellow-500",
+    orange: "text-orange-500",
+    green: "text-green-500",
+  };
 
-    return (
-        <div className="space-y-8 py-4 h-full md:flex flex-col justify-evenly">
-            {features.map((feature, index) => (
-                <div key={index} className="flex gap-3">
-                    <div className={`${diamondColors[color]} md:text-3xl text-xl flex-shrink-0 mt-1`}>
-                        ◆
-                    </div>
-                    <p className="text-black font-medium leading-tight text-md md:text-xl">
-                        {feature}
-                    </p>
-                </div>
-            ))}
+  return (
+    <div className="space-y-4 py-4 h-full md:flex flex-col justify-evenly px-8">
+      {features.map((feature, index) => (
+        <div key={index} className="flex gap-2">
+          <div
+            className={`${diamondColors[color]} md:text-3xl text-xl flex-shrink-0 mt-1`}
+          >
+            ◆
+          </div>
+          <p className="text-black font-medium leading-tight text-md md:text-xl">
+            {feature}
+          </p>
         </div>
-    );
+      ))}
+    </div>
+  );
 }
 
 function Section({ title, description, features, color, imageSrc }) {
-    const bgColors = {
-        blue: "bg-blue-600",
-        purple: "bg-purple-600",
-        yellow: "bg-yellow-500",
-        orange: "bg-orange-500",
-        green: "bg-green-500",
-    };
+  const bgColors = {
+    blue: "bg-blue-600",
+    purple: "bg-purple-600",
+    yellow: "bg-yellow-500",
+    orange: "bg-orange-500",
+    green: "bg-green-500",
+  };
 
-    return (
-        <div className="min-h-screen h-full w-full flex items-center">
-            <div className="w-full h-full">
-                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white text-center md:hidden py-5 px-10">
-                    A Seamless Creative Workflow Powered by AI
-                </h1>
-                {/* Mobile Layout */}
-                <div className="flex h-full flex-col md:hidden px-4 space-y-4 relative">
-                    <div className="absolute inset-0 -z-10">
-                        <div className="relative w-full h-full">
-                            <Image
-                                src={imageSrc}
-                                alt={title}
-                                fill
-                                priority
-                                className="object-cover"
-                                sizes="100vw"
-                                quality={90}
-                            />
-                            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
-                        </div>
-                    </div>
-                    <div className="bg-white rounded-[32px] p-6 space-y-4">
-                        <div className={`${bgColors[color]} rounded-full px-6 py-3 mx-auto max-w-[280px]`}>
-                            <h2 className="text-white text-lg text-center font-semibold">{title}</h2>
-                        </div>
-                        <p className="text-gray-600 text-base text-center leading-relaxed">{description}</p>
-                        <FeatureList features={features} color={color} />
-                    </div>
-                </div>
-                {/* Desktop Layout */}
-                <div className="hidden md:block h-full">
-                    <h1 className="text-4xl font-bold text-white text-center py-10">
-                        A Seamless Creative Workflow Powered by AI
-                    </h1>
-                    <div className="grid md:grid-cols-4 pb-40 pl-20 h-full">
-                        <div className="md:col-span-1 space-y-6">
-                            <div className={`${bgColors[color]} rounded-l-full px-6 py-3 border-none`}>
-                                <h2 className="text-white text-2xl font-medium text-center">{title}</h2>
-                            </div>
-                            <p className="text-gray-400 font-semibold text-xl tracking-tighter">{description}</p>
-                        </div>
-                        <div className="md:col-span-3 bg-white grid grid-cols-2 border-none">
-                            <div className="h-full flex items-center">
-                                <FeatureList features={features} color={color} />
-                            </div>
-                            <div className="relative h-full">
-                                <Image
-                                    src={imageSrc}
-                                    alt={title}
-                                    fill
-                                    priority
-                                    className="object-cover"
-                                    sizes="(max-width: 768px) 100vw, 50vw"
-                                    quality={90}
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  return (
+    <div className="min-h-screen h-full w-full flex items-center">
+      <div className="w-full h-full">
+        <h1 className="text-2xl md:text-3xl font-bold text-white text-center md:hidden py-5 px-10">
+          A Seamless Creative Workflow Powered by AI
+        </h1>
+        {/* Mobile Layout */}
+        <div className="flex h-full flex-col md:hidden px-4 space-y-4 relative">
+          <div className="absolute inset-0 -z-10">
+            <div className="relative w-full h-full">
+              <Image
+                src={imageSrc}
+                alt={title}
+                fill
+                priority
+                className="object-cover"
+                sizes="100vw"
+                quality={90}
+              />
+              <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
             </div>
+          </div>
+          <div className="bg-white rounded-[32px] p-6 space-y-4">
+            <div
+              className={`${bgColors[color]} rounded-full px-6 py-3 mx-auto max-w-[280px]`}
+            >
+              <h2 className="text-white text-lg text-center font-semibold">
+                {title}
+              </h2>
+            </div>
+            <p className="text-gray-600 text-base text-center leading-relaxed">
+              {description}
+            </p>
+            <FeatureList features={features} color={color} />
+          </div>
         </div>
-    );
+        {/* Desktop Layout */}
+        <div className="hidden md:block h-full">
+          <h1 className="text-5xl font-bold text-white text-center py-10">
+            A Seamless Creative Workflow Powered by AI
+          </h1>
+          <div className="grid md:grid-cols-4 pb-40 pl-20 h-full">
+            <div className="md:col-span-1 space-y-6">
+              <div
+                className={`${bgColors[color]} rounded-l-full px-6 py-3 border-none`}
+              >
+                <h2 className="text-white text-2xl font-medium text-center">
+                  {title}
+                </h2>
+              </div>
+              <p className="text-gray-400 font-semibold text-xl tracking-wide leading-relaxed px-6 text-left">
+                {description}
+              </p>
+            </div>
+            <div className="md:col-span-3 bg-white grid grid-cols-2 border-none">
+              <div className="h-full flex items-center">
+                <FeatureList features={features} color={color} />
+              </div>
+              <div className="relative h-full">
+                <Image
+                  src={imageSrc}
+                  alt={title}
+                  fill
+                  priority
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  quality={90}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default function ProductDisplaySection() {
-    const containerRef = useRef(null);
-    const [currentSection, setCurrentSection] = useState(0);
-    const [isTransitioning, setIsTransitioning] = useState(false);
-    const lastScrollTime = useRef(Date.now());
-    const scrollTimeout = useRef(null);
+  const containerRef = useRef(null);
+  const [currentSection, setCurrentSection] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const lastScrollTime = useRef(Date.now());
+  const scrollTimeout = useRef(null);
 
-    const sections = [
+  const sections = [
     {
       title: "Automate Follower Engagement",
       description:
@@ -189,64 +203,78 @@ export default function ProductDisplaySection() {
     setCurrentSection(newSection);
     if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
 
-    window.scrollTo({ top: newSection * window.innerHeight, behavior: 'smooth' });
+    window.scrollTo({
+      top: newSection * window.innerHeight,
+      behavior: "smooth",
+    });
 
     scrollTimeout.current = setTimeout(() => {
-        setIsTransitioning(false);
+      setIsTransitioning(false);
     }, 100);
-};
+  };
 
-useEffect(() => {
+  useEffect(() => {
     const handleScroll = debounce(() => {
-        const scrollPosition = window.scrollY;
-        const viewportHeight = window.innerHeight;
-        const sectionIndex = Math.round(scrollPosition / viewportHeight);
+      const scrollPosition = window.scrollY;
+      const viewportHeight = window.innerHeight;
+      const sectionIndex = Math.round(scrollPosition / viewportHeight);
 
-        if (sectionIndex !== currentSection && sectionIndex >= 0 && sectionIndex < sections.length) {
-            handleSectionChange(sectionIndex);
-        }
+      if (
+        sectionIndex !== currentSection &&
+        sectionIndex >= 0 &&
+        sectionIndex < sections.length
+      ) {
+        handleSectionChange(sectionIndex);
+      }
     }, 50);
 
     const handleWheel = debounce((e) => {
-        if (isTransitioning) return;
+      if (isTransitioning) return;
 
-        const direction = e.deltaY > 0 ? 1 : -1;
-        const newSection = Math.max(0, Math.min(sections.length - 1, currentSection + direction));
+      const direction = e.deltaY > 0 ? 1 : -1;
+      const newSection = Math.max(
+        0,
+        Math.min(sections.length - 1, currentSection + direction)
+      );
 
-        if (newSection !== currentSection) {
-            handleSectionChange(newSection);
-        }
+      if (newSection !== currentSection) {
+        handleSectionChange(newSection);
+      }
     }, 100);
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('wheel', handleWheel, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("wheel", handleWheel, { passive: true });
 
     return () => {
-        window.removeEventListener('scroll', handleScroll);
-        window.removeEventListener('wheel', handleWheel);
-        if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("wheel", handleWheel);
+      if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
     };
-}, [currentSection, sections.length, isTransitioning]);
+  }, [currentSection, sections.length, isTransitioning]);
 
-return (
-    <div ref={containerRef} className="relative" style={{ height: `${sections.length * 100}vh` }}>
-        <div className="sticky top-0 h-screen overflow-hidden">
-            {sections.map((section, index) => (
-                <div
-                    key={index}
-                    className={`h-screen w-full absolute top-0 left-0 transition-all duration-700 ease-in-out ${
-                        isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"
-                    }`}
-                    style={{
-                        opacity: currentSection === index ? 1 : 0,
-                        transform: `scale(${currentSection === index ? 1 : 0.95})`,
-                        pointerEvents: currentSection === index ? "auto" : "none",
-                    }}
-                >
-                    <Section {...section} />
-                </div>
-            ))}
-        </div>
+  return (
+    <div
+      ref={containerRef}
+      className="relative"
+      style={{ height: `${sections.length * 100}vh` }}
+    >
+      <div className="sticky top-0 h-screen overflow-hidden">
+        {sections.map((section, index) => (
+          <div
+            key={index}
+            className={`h-screen w-full absolute top-0 left-0 transition-all duration-700 ease-in-out ${
+              isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"
+            }`}
+            style={{
+              opacity: currentSection === index ? 1 : 0,
+              transform: `scale(${currentSection === index ? 1 : 0.95})`,
+              pointerEvents: currentSection === index ? "auto" : "none",
+            }}
+          >
+            <Section {...section} />
+          </div>
+        ))}
+      </div>
     </div>
-);
+  );
 }

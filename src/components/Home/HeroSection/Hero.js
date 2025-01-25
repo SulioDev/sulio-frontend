@@ -7,10 +7,10 @@ export default function Hero() {
       <div className="hero-content gap-16 flex-col lg:flex-row justify-around">
         <div className="flex flex-col justify-start">
           <div className="text-left px-4">
-            <h1 className="text-3xl md:text-4xl font-bold">
+            <h1 className="text-4xl md:text-5xl font-bold">
               Artists Using AI Assistants Have Increased Engagement by 85%.
             </h1>
-            <p className="py-3 text-sm md:text-lg">
+            <p className="py-3 text-md md:text-xl">
               Simplify your workflow, connect with buyers and focus on creating
               art.
             </p>
@@ -30,10 +30,10 @@ export default function Hero() {
         <div className="max-w-72 md:max-w-sm space-y-4">
           <div className="card bg-white text-black max-w-72 md:max-w-sm shrink-0 shadow-2xl rounded-3xl">
             <div className="text-center -rotate-3 text-lg md:text-3xl font-extrabold flex flex-col justify-center items-center -translate-y-4 text-[#ff8c43]">
-              <span className="rounded-xl px-2 py-1 w-fit bg-[#FBF2B3]">
+              <span className="rounded-xl px-2 py-1 w-fit bg-[#FBF2B3] font-extrabold">
                 SEE HOW AI
               </span>
-              <span className="rounded-xl px-2 py-1 w-fit bg-[#FBF2B3]">
+              <span className="rounded-xl px-2 py-1 w-fit bg-[#FBF2B3] font-extrabold">
                 CHATBOT WORKS
               </span>
             </div>

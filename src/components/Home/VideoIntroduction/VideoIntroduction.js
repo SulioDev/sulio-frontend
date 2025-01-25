@@ -4,10 +4,10 @@ export default function VideoIntroduction() {
   return (
     <div className="relative h-screen min-h-screen overflow-hidden">
       {/* Mobile-first header section */}
-      <div className="relative px-4 md:pt-6 pb-8 h-36 bg-white z-10">
+      <div className="relative px-4 md:pt-10 pb-8 h-40 md:h-36 bg-white z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 items-center relative z-10">
           <div className="md:col-span-8 md:p-8">
-            <h1 className="text-[24px] pt-5 md:pt-0 lg:pt-0  md:text-2xl lg:text-3xl font-bold text-black leading-tight tracking-tighter">
+            <h1 className="text-[24px] pt-8 md:pt-0 lg:pt-0 md:text-2xl lg:text-3xl font-bold text-black leading-tight tracking-tighter">
               People won&apos;t be replaced by AI, but by those who use it.
             </h1>
           </div>
@@ -43,18 +43,17 @@ export default function VideoIntroduction() {
       </div>
 
       {/* Main Card Section */}
-      <div className="container mx-auto p-4 pb-8 md:h-full z-0">
-        {/* Rest of your code remains exactly the same */}
+      <div className="container mx-auto p-6 md:h-full z-0">
         <div className="rounded-3xl border-2 border-[#b49494] overflow-hidden md:text-inherit py-10 md:py-0">
           <div className="grid grid-cols-1 md:grid-cols-12 h-full">
             {/* Product Info - Shown first on mobile */}
             <div className="md:col-span-4 md:order-2 order-1 flex flex-col justify-center p-6 text-center md:text-left">
-              <h2 className="text-blue-600 text-2xl font-bold mb-4">
+              <h2 className="text-blue-600 text-2xl md:text-2xl lg:text-4xl font-bold mb-4">
                 Sulio Art
                 <br />
                 Artist AI Chatbot
               </h2>
-              <p className="text-base font-medium">
+              <p className="text-md md:text-lg font-medium">
                 Meet Sulio Art&apos;s all-in-one product experience AI Chatbot,
                 enhanced with artificial intelligence.
               </p>
@@ -79,7 +78,7 @@ export default function VideoIntroduction() {
                 </div>
                 {/* On desktop, show video */}
                 <video
-                  className="hidden md:block w-full h-full object-cover"
+                  className="hidden md:block w-full h-full object-contain"
                   controls
                   poster="/images/video-thumbnail.png"
                 >
