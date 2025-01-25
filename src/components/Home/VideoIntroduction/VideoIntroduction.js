@@ -17,7 +17,7 @@ export default function VideoIntroduction() {
         <div className="hidden md:block absolute right-0 top-0 w-[330px] overflow-visible">
           <div className="relative w-full">
             <Image
-              src="/images/section4Overlay.gif"
+              src="/images/section4overlay.gif"
               alt="Overlay animation"
               width={330}
               height={330}
