@@ -123,7 +123,7 @@ export default function PricingComparison() {
         </table>
       </div>
 
-      <div className="bg-gradient-to-r from-gray-900 to-black text-white w-full mt-12 p-8 rounded-lg text-center">
+      <div className="bg-gradient-to-r from-gray-900 to-black text-white w-full mt-12 p-8 rounded-3xl text-center">
         <h2 className="text-2xl font-bold mb-4">
           The all-in-one solution for artists to elevate their business with AI
         </h2>
