@@ -14,7 +14,7 @@ function FeatureList({ features, color = "blue" }) {
       {features.map((feature, index) => (
         <div key={index} className="flex gap-2">
           <div className={`${diamondColors[color]} md:text-3xl text-xl flex-shrink-0 mt-1`}>◆</div>
-          <p className="text-black font-medium leading-tight text-sm md:text-lg lg:text-xl">{feature}</p>
+          <p className="text-black font-medium leading-tight text-sm md:text-xl lg:text-2xl">{feature}</p>
         </div>
       ))}
     </div>
@@ -42,8 +42,8 @@ function Section({ title, description, features, color, imageSrc, layout = "top"
     );
   };
     const getTabletAndDesktopContent = (layout) => {
-      const titleFontSize = "text-[1.2rem] md:text-[1.4rem]"; // Adjust title size for tablet
-      const descriptionFontSize = "text-base md:text-lg"; // Adjust description size for tablet
+      const titleFontSize = "text-[1.2rem] md:text-[1.6rem]"; // Adjust title size for tablet
+      const descriptionFontSize = "text-gray-400 text-lg leading-relaxed tracking-tight text-justify hyphens-auto [word-spacing:-1.5px] [letter-spacing:-0.3px] [text-align-last:left] max-w-prose";
       const paddingX = "px-4 md:px-6"; // Adjust horizontal padding for tablet
 
       switch (layout) {
