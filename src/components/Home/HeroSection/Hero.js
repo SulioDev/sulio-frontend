@@ -19,15 +19,14 @@ export default function Hero() {
                 src="/images/section1.gif"
                 alt="AI Assistant demonstration"
                 fill
-                priority
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                priority                
                 className="object-cover"
-                quality={90}
+                quality={100}
               />
             </div>
           </div>
         </div>
-        <div className="max-w-72 md:max-w-sm space-y-4">
+        <div className="max-w-72 md:max-w-sm space-y-2">
           <div className="card bg-white text-black max-w-72 md:max-w-sm shrink-0 shadow-2xl rounded-3xl">
             <div className="text-center -rotate-3 text-lg md:text-3xl font-extrabold flex flex-col justify-center items-center -translate-y-4 text-[#ff8c43]">
               <span className="rounded-xl px-2 py-1 w-fit bg-[#FBF2B3] font-extrabold">
@@ -37,7 +36,7 @@ export default function Hero() {
                 CHATBOT WORKS
               </span>
             </div>
-            <form className="card-body">
+            <form className="my-4 px-6 space-y-4">
               <div className="form-control w-full flex flex-row justify-center items-center gap-2">
                 <label className="input flex items-center gap-2 rounded-3xl bg-gray-100 p-4 md:p-7 text-sm md:text-md">
                   <svg
@@ -109,12 +108,12 @@ export default function Hero() {
                   />
                 </label>
               </div>
-              <div className="form-control mt-6">
+              <div className="form-control mt-2">
                 <button className="btn p-4 md:p-7 bg-[#ff8c43] text-white border-none text-lg md:text-xl rounded-3xl font-extrabold content-center hover:bg-[#e67d3a] transition-colors">
                   TRY FOR FREE
                 </button>
               </div>
-              <div className="form-control mt-6 flex flex-row justify-center items-center gap-2">
+              <div className="form-control mt-2 flex flex-row justify-center items-center gap-2">
                 <span className="text-slate-400">Already a member?</span>
                 <Link href="/signin" className="text-info hover:underline">
                   Sign In

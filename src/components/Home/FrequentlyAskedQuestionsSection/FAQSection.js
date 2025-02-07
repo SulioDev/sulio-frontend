@@ -19,16 +19,12 @@ export default function FrequentlyAskedQuestions() {
   ];
 
   return (
-    <div className="min-h-screen h-screen w-full flex flex-col justify-between items-center md:flex-row gap-1">
+    <div className="min-h-screen h-screen w-full flex flex-col justify-center items-center md:flex-row gap-1">
       <div
-        className="text-3xl md:text-4xl font-bold md:h-full w-full md:w-[40rem] md:bg-cover bg-no-repeat flex flex-row-reverse md:flex-col"
+        className="text-3xl md:text-4xl font-bold md:h-full w-full md:w-[40rem] md:bg-cover bg-no-repeat flex flex-row-reversemd:flex-col"
         style={{ backgroundImage: "url(/images/FAQ.gif)" }}
       >
-        <div className="text-sm md:text-lg font-thin text-gray-600 md:pl-36 flex justify-center items-start h-full w-ful p-6 leading-relaxed tracking-wide">
-          Here are four common questions that artist might ask when using
-          Sulio&apos;s AI Chatbot Assistant, along with answers:
-        </div>
-        <div className="h-full w-full lg:text-5xl flex font-extrabold justify-center items-center md:items-start px-4">
+        <div className="h-full w-full lg:text-5xl flex font-bold justify-center items-center">
           Frequently
           <br /> Asked
           <br /> Questions

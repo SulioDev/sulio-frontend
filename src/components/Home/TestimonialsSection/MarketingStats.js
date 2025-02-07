@@ -64,7 +64,7 @@ export default function MarketingStats() {
                 </div>
               </div>
               <div className="text-center">
-                <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 mb-2 shadow-lg hover:shadow-xl">
+                <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-10 rounded-full transition-all duration-300 transform hover:scale-105 mb-2 shadow-lg hover:shadow-xl text-lg">
                   Start Free Trial
                 </button>
                 <p className="text-xs text-gray-400">

@@ -1,6 +1,6 @@
 import React from "react";
 import { Mail, Facebook, Instagram } from "lucide-react";
-import Image from 'next/image';
+import Image from "next/image";
 
 export default function LandingPage() {
   return (
@@ -32,10 +32,14 @@ export default function LandingPage() {
         {/* Hero Card */}
         <div className="bg-gradient-to-r from-gray-900 to-black rounded-3xl p-6 lg:p-8 text-white text-center mb-8 shadow-xl w-full">
           <h1 className="text-2xl lg:text-3xl font-bold mb-4">
-            The all-in-one solution for artists to elevate their business with AI
+            The all-in-one solution for artists to elevate their business with
+            AI
           </h1>
           <p className="text-gray-300 mb-8 lg:text-lg">
-            Sulio AI Chatbot Assistant helps artists automate client interactions, manage sales, and enhance their engagement—giving you more time to create. Seamlessly integrate AI into your workflow and experience the freedom to focus on what matters most: your art.
+            Sulio AI Chatbot Assistant helps artists automate client
+            interactions, manage sales, and enhance their engagement—giving you
+            more time to create. Seamlessly integrate AI into your workflow and
+            experience the freedom to focus on what matters most: your art.
           </p>
           <button className="bg-yellow-400 hover:bg-yellow-500 transition-colors text-black font-semibold px-8 py-3 rounded-full mb-4">
             Try for Free
@@ -49,15 +53,15 @@ export default function LandingPage() {
         <footer className="flex flex-col items-center gap-6 w-full md:hidden">
           {/* Navigation Links */}
           <nav className="px-4 flex justify-center items-center text-sm text-center text-gray-600 font-bold gap-4 md:text-md">
-          <a href="#" className="hover:text-black transition-colors">
-                Contact Us
-              </a>
-              <a href="#" className="hover:text-black transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="hover:text-black transition-colors">
-                Terms and Conditions
-              </a>
+            <a href="#" className="hover:text-black transition-colors">
+              Contact Us
+            </a>
+            <a href="#" className="hover:text-black transition-colors">
+              Privacy Policy
+            </a>
+            <a href="#" className="hover:text-black transition-colors">
+              Terms and Conditions
+            </a>
           </nav>
           <div className="px-5 flex justify-center items-center w-full">
             <svg
@@ -102,17 +106,21 @@ export default function LandingPage() {
           {/* Copyright */}
           <div className="mb-20 text-xs text-gray-500 px-12 text-center -tracking-tighter">
             <p>
-              © 2024 All Right Reserved. Sulio Art Trademarks, product names, logos and other marks and designs are trademarks of
+              © 2024 All Right Reserved. Sulio Art Trademarks, product names,
+              logos and other marks and designs are trademarks of
             </p>
             <p>
-              Sulio Art Co., Ltd or its subsidiaries and may be used without permission.
+              Sulio Art Co., Ltd or its subsidiaries and may be used without
+              permission.
             </p>
             <p className="mt-2">service@sulio-art.com</p>
           </div>
         </footer>
 
         {/* Desktop Footer */}
-        <footer className="flex-col items-center gap-6 w-full hidden md:flex">
+        <footer className="flex-col items-center gap-6 w-full hidden md:flex mt-10 py-4 relative">
+          {" "}
+          {/* Added mt-10 and py-4 here */}
           <div className="flex gap-6 justify-center items-center w-full">
             {/* Logo and Brand */}
             <div className="flex items-center gap-3">
@@ -136,36 +144,39 @@ export default function LandingPage() {
               <a href="#" className="hover:text-black transition-colors">
                 Contact Us
               </a>
-              &#9679;
+              ●
               <a href="#" className="hover:text-black transition-colors">
                 Privacy Policy
               </a>
-              &#9679;
+              ●
               <a href="#" className="hover:text-black transition-colors">
                 Terms and Conditions
               </a>
             </nav>
           </div>
-          <div className="flex justify-center items-center w-full">
-            <svg
-              className="h-3 w-3"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="-60 -52 120 104"
-            >
-              <polygon
-                points="50,0 25,43.3 -25,43.3 -50,0 -25,-43.3 25,-43.3"
-                fill="#b49494"
-              />
-            </svg>
-            <hr className="w-full h-[0.1rem] bg-[#b49494]"></hr>
+          <div className="flex justify-end items-center w-full px-6 relative">
+            <div className="w-full h-[0.1rem] bg-[#b49494]">
+            </div>
+             <svg
+                className="h-3 w-3 absolute left-0 top-1/2 transform -translate-y-1/2 translate-x-4"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="-60 -52 120 104"
+              >
+                <polygon
+                  points="50,0 25,43.3 -25,43.3 -50,0 -25,-43.3 25,-43.3"
+                  fill="#b49494"
+                />
+              </svg>
           </div>
           {/* Copyright */}
           <div className="text-xs text-gray-500 text-center px-4">
             <p>
-              © 2024 All Right Reserved. Sulio Art Trademarks, product names, logos and other marks and designs are trademarks of
+              © 2024 All Right Reserved. Sulio Art Trademarks, product names,
+              logos and other marks and designs are trademarks of
             </p>
             <p>
-              Sulio Art Co., Ltd or its subsidiaries and may be used without permission.
+              Sulio Art Co., Ltd or its subsidiaries and may be used without
+              permission.
             </p>
             <p className="mt-2">service@sulio-art.com</p>
           </div>

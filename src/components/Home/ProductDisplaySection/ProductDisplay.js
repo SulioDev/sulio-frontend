@@ -1,18 +1,4 @@
-"use client";
-import React, { useState, useEffect, useRef } from "react";
-import Image from "next/image";
-
-function debounce(func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-}
+import Image from "next/image"
 
 function FeatureList({ features, color = "blue" }) {
   const diamondColors = {
@@ -21,96 +7,157 @@ function FeatureList({ features, color = "blue" }) {
     yellow: "text-yellow-500",
     orange: "text-orange-500",
     green: "text-green-500",
-  };
+  }
 
   return (
-    <div className="space-y-4 py-4 h-full md:flex flex-col justify-evenly px-8">
+    <div className="space-y-3 md:space-y-4 py-3 md:py-4 h-full md:flex flex-col justify-evenly px-4 md:px-8">
       {features.map((feature, index) => (
         <div key={index} className="flex gap-2">
-          <div
-            className={`${diamondColors[color]} md:text-3xl text-xl flex-shrink-0 mt-1`}
-          >
-            ◆
-          </div>
-          <p className="text-black font-medium leading-tight text-md md:text-xl">
-            {feature}
-          </p>
+          <div className={`${diamondColors[color]} md:text-3xl text-xl flex-shrink-0 mt-1`}>◆</div>
+          <p className="text-black font-medium leading-tight text-sm md:text-lg lg:text-xl">{feature}</p>
         </div>
       ))}
     </div>
-  );
+  )
 }
 
-function Section({ title, description, features, color, imageSrc }) {
+function Section({ title, description, features, color, imageSrc, layout = "top" }) {
   const bgColors = {
     blue: "bg-blue-600",
     purple: "bg-purple-600",
     yellow: "bg-yellow-500",
     orange: "bg-orange-500",
     green: "bg-green-500",
+  }
+  const getMobileContent = () => {
+    return (
+      <>
+        <div className={`${bgColors[color]} rounded-full px-4 py-2 md:px-6 md:py-3 border-none`}>
+          <h2 className="text-white text-lg md:text-xl font-medium text-center">{title}</h2>
+        </div>
+        <p className="text-gray-400 font-medium text-base md:text-lg leading-relaxed text-center">
+          {description}
+        </p>
+      </>
+    );
   };
+    const getTabletAndDesktopContent = (layout) => {
+      const titleFontSize = "text-[1.2rem] md:text-[1.4rem]"; // Adjust title size for tablet
+      const descriptionFontSize = "text-base md:text-lg"; // Adjust description size for tablet
+      const paddingX = "px-4 md:px-6"; // Adjust horizontal padding for tablet
 
+      switch (layout) {
+        case 'top':
+          return (
+            <>
+              <div className={`${bgColors[color]} rounded-l-full ${paddingX} py-2 md:py-3 border-none`}>
+                <h2 className={`text-white ${titleFontSize} h-12 md:h-16 font-medium text-center flex justify-center items-center`}>{title}</h2>
+              </div>
+              <p className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}>
+                {description}
+              </p>
+            </>
+          );
+        case 'top-middle-center':
+          return (
+            <>
+              <div className={`${bgColors[color]} rounded-l-full ${paddingX} py-2 md:py-3 border-none`}>
+                <h2 className={`text-white ${titleFontSize} h-12 md:h-16 font-medium text-center flex justify-center items-center`}>{title}</h2>
+              </div>
+              <p className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}>
+                {description}
+              </p>
+            </>
+          );
+        case 'middle':
+          return (
+            <>
+              <p className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}>
+                {description.slice(0, description.length / 2 - 1)}
+              </p>
+              <div className={`${bgColors[color]} rounded-l-full ${paddingX} py-2 md:py-3 border-none`}>
+                <h2 className={`text-white ${titleFontSize} h-12 md:h-16 font-medium text-center flex justify-center items-center`}>{title}</h2>
+              </div>
+              <p className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}>
+                {description.slice(description.length / 2 - 1, description.length)}
+              </p>
+            </>
+          );
+        case 'bottom-middle-center':
+          return (
+            <>
+              <p className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}>
+                {description}
+              </p>
+              <div className={`${bgColors[color]} rounded-l-full ${paddingX} py-2 md:py-3 border-none`}>
+                <h2 className={`text-white ${titleFontSize} h-12 md:h-16 font-medium text-center flex justify-center items-center`}>{title}</h2>
+              </div>
+            </>
+          );
+        case 'bottom':
+          return (
+            <>
+              <p className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}>
+                {description}
+              </p>
+              <div className={`${bgColors[color]} rounded-l-full ${paddingX} py-2 md:py-3 border-none`}>
+                <h2 className={`text-white ${titleFontSize} h-12 md:h-16 font-medium text-center flex justify-center items-center`}>{title}</h2>
+              </div>
+            </>
+          );
+          default:
+            return null;
+      }
+    }
+    const getTabletAndDesktopLayoutStyles = (layout) => {
+      switch (layout) {
+        case 'top':
+          return 'relative top-0 space-y-3 md:space-y-6';
+        case 'top-middle-center':
+          return 'relative top-1/4 space-y-3 md:space-y-6';
+        case 'middle':
+          return 'flex flex-col justify-center space-y-3 md:space-y-6';
+        case 'bottom-middle-center':
+          return 'flex flex-col justify-center space-y-3 md:space-y-6';
+        case 'bottom':
+          return 'flex flex-col justify-end space-y-3 md:space-y-6';
+        default:
+          return 'flex flex-col space-y-3 md:space-y-6';
+      }
+    }
   return (
-    <div className="min-h-screen h-full w-full flex items-center">
+    <div className="h-screen w-full flex items-center">
       <div className="w-full h-full">
-        <h1 className="text-2xl md:text-3xl font-bold text-white text-center md:hidden py-5 px-10">
+        {/* Adjusted padding-top here to create space */}
+        <h1 className="text-xl md:text-3xl font-bold text-white text-center md:hidden pt-12 py-3 md:py-5 px-4 md:px-10">
           A Seamless Creative Workflow Powered by AI
         </h1>
         {/* Mobile Layout */}
-        <div className="flex h-full flex-col md:hidden px-4 space-y-4 relative">
-          <div className="absolute inset-0 -z-10">
-            <div className="relative w-full h-full">
-              <Image
-                src={imageSrc}
-                alt={title}
-                fill
-                priority
-                className="object-cover"
-                sizes="100vw"
-                quality={90}
-              />
-              <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
-            </div>
+        <div className="md:hidden px-3 py-6 md:px-4 md:py-8 space-y-3 md:space-y-4 relative">
+          <div className="flex flex-col items-center">
+            {getMobileContent()}
           </div>
-          <div className="bg-white rounded-[32px] p-6 space-y-4">
-            <div
-              className={`${bgColors[color]} rounded-full px-6 py-3 mx-auto max-w-[280px]`}
-            >
-              <h2 className="text-white text-lg text-center font-semibold">
-                {title}
-              </h2>
-            </div>
-            <p className="text-gray-600 text-base text-center leading-relaxed">
-              {description}
-            </p>
+          {/* Increased margin-top here to push content further down */}
+          <div className="mt-6 md:mt-4">
             <FeatureList features={features} color={color} />
           </div>
         </div>
         {/* Desktop Layout */}
-        <div className="hidden md:block h-full">
-          <h1 className="text-5xl font-bold text-white text-center py-10">
+        <div className="hidden md:block h-screen">
+          <h1 className="text-4xl lg:text-5xl font-bold text-white text-center py-6 md:py-10">
             A Seamless Creative Workflow Powered by AI
           </h1>
-          <div className="grid md:grid-cols-4 pb-40 pl-20 h-full">
-            <div className="md:col-span-1 space-y-6">
-              <div
-                className={`${bgColors[color]} rounded-l-full px-6 py-3 border-none`}
-              >
-                <h2 className="text-white text-2xl font-medium text-center">
-                  {title}
-                </h2>
-              </div>
-              <p className="text-gray-400 font-semibold text-xl tracking-wide leading-relaxed px-6 text-left">
-                {description}
-              </p>
+          <div className="grid md:grid-cols-4 pb-20 md:pb-40 pl-10 md:pl-20 h-full">
+            <div className={`md:col-span-1 ${getTabletAndDesktopLayoutStyles(layout)}`}>
+              {getTabletAndDesktopContent(layout)}
             </div>
-            <div className="md:col-span-3 bg-white grid grid-cols-2 border-none">
+            <div className="md:col-span-3 bg-white grid grid-cols-1 md:grid-cols-2 border-none">
               <div className="h-full flex items-center">
                 <FeatureList features={features} color={color} />
               </div>
               <div className="relative h-full">
                 <Image
-                  src={imageSrc}
+                  src={imageSrc || "/placeholder.svg"}
                   alt={title}
                   fill
                   priority
@@ -124,16 +171,10 @@ function Section({ title, description, features, color, imageSrc }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export default function ProductDisplaySection() {
-  const containerRef = useRef(null);
-  const [currentSection, setCurrentSection] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const lastScrollTime = useRef(Date.now());
-  const scrollTimeout = useRef(null);
-
   const sections = [
     {
       title: "Automate Follower Engagement",
@@ -146,6 +187,7 @@ export default function ProductDisplaySection() {
       ],
       color: "blue",
       imageSrc: "/images/section21.gif",
+      layout: "top"  // Title at top, description below
     },
     {
       title: "Smart Art Recommendations",
@@ -158,6 +200,7 @@ export default function ProductDisplaySection() {
       ],
       color: "purple",
       imageSrc: "/images/section22.gif",
+      layout: "top-middle-center"
     },
     {
       title: "Transaction Tracking",
@@ -170,6 +213,7 @@ export default function ProductDisplaySection() {
       ],
       color: "yellow",
       imageSrc: "/images/section23.gif",
+      layout: "middle"  // Title at bottom
     },
     {
       title: "Fraud Detection",
@@ -182,6 +226,7 @@ export default function ProductDisplaySection() {
       ],
       color: "orange",
       imageSrc: "/images/section24.gif",
+      layout: "bottom-middle-center"  // Title at bottom
     },
     {
       title: "Streamlined Client Communication",
@@ -194,87 +239,17 @@ export default function ProductDisplaySection() {
       ],
       color: "green",
       imageSrc: "/images/section25.gif",
-    },
-  ];
-
-  const handleSectionChange = (newSection) => {
-    if (newSection === currentSection) return;
-    setIsTransitioning(true);
-    setCurrentSection(newSection);
-    if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
-
-    window.scrollTo({
-      top: newSection * window.innerHeight,
-      behavior: "smooth",
-    });
-
-    scrollTimeout.current = setTimeout(() => {
-      setIsTransitioning(false);
-    }, 100);
-  };
-
-  useEffect(() => {
-    const handleScroll = debounce(() => {
-      const scrollPosition = window.scrollY;
-      const viewportHeight = window.innerHeight;
-      const sectionIndex = Math.round(scrollPosition / viewportHeight);
-
-      if (
-        sectionIndex !== currentSection &&
-        sectionIndex >= 0 &&
-        sectionIndex < sections.length
-      ) {
-        handleSectionChange(sectionIndex);
-      }
-    }, 50);
-
-    const handleWheel = debounce((e) => {
-      if (isTransitioning) return;
-
-      const direction = e.deltaY > 0 ? 1 : -1;
-      const newSection = Math.max(
-        0,
-        Math.min(sections.length - 1, currentSection + direction)
-      );
-
-      if (newSection !== currentSection) {
-        handleSectionChange(newSection);
-      }
-    }, 100);
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("wheel", handleWheel, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("wheel", handleWheel);
-      if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
-    };
-  }, [currentSection, sections.length, isTransitioning]);
+      layout: "bottom"  // Title at bottom
+    }
+  ]
 
   return (
-    <div
-      ref={containerRef}
-      className="relative"
-      style={{ height: `${sections.length * 100}vh` }}
-    >
-      <div className="sticky top-0 h-screen overflow-hidden">
-        {sections.map((section, index) => (
-          <div
-            key={index}
-            className={`h-screen w-full absolute top-0 left-0 transition-all duration-700 ease-in-out ${
-              isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"
-            }`}
-            style={{
-              opacity: currentSection === index ? 1 : 0,
-              transform: `scale(${currentSection === index ? 1 : 0.95})`,
-              pointerEvents: currentSection === index ? "auto" : "none",
-            }}
-          >
-            <Section {...section} />
-          </div>
-        ))}
-      </div>
+    <div className="relative">
+      {sections.map((section, index) => (
+        <div key={index} className="min-h-screen">
+          <Section {...section} />
+        </div>
+      ))}
     </div>
-  );
+  )
 }
