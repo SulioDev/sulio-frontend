@@ -121,14 +121,22 @@ export default function LandingPage() {
         <footer className="flex-col items-center gap-6 w-full hidden md:flex mt-10 py-4 relative">
           {" "}
           {/* Added mt-10 and py-4 here */}
-          <div className="flex gap-6 justify-center items-center w-full">
+          <div className="flex gap-4 justify-center items-center w-full px-2">
             {/* Logo and Brand */}
-            <div className="flex items-center gap-3">
-              <span className="font-semibold">Sulio Art</span>
-              <span className="text-gray-600">Artist AI Chatbot</span>
+            <div className="flex items-center gap-2 font-bold text-lg">
+                <Image
+                  alt="User avatar"
+                  src="/images/logo.png"
+                  height={100}
+                  width={100}
+                  quality={100}
+                  priority
+                  className="h-full w-12 md:w-24 object-cover"
+                />
+              <span className="font-bold text-gray-600 text-left leading-tight">Sulio Art Artist AI Chatbot</span>
             </div>
             {/* Social Links */}
-            <div className="flex gap-8">
+            <div className="flex gap-4 text-gray-600">
               <a href="#" className="hover:scale-110 transition-transform">
                 <Instagram className="w-6 h-6 text-gray-600 hover:text-gray-900" />
               </a>
@@ -140,7 +148,7 @@ export default function LandingPage() {
               </a>
             </div>
             {/* Navigation Links */}
-            <nav className="flex items-center justify-center text-sm text-gray-600 font-bold gap-4 md:text-md">
+            <nav className="flex items-center justify-center text-sm text-gray-600 font-bold gap-2 md:text-md">
               <a href="#" className="hover:text-black transition-colors">
                 Contact Us
               </a>
@@ -155,18 +163,17 @@ export default function LandingPage() {
             </nav>
           </div>
           <div className="flex justify-end items-center w-full px-6 relative">
-            <div className="w-full h-[0.1rem] bg-[#b49494]">
-            </div>
-             <svg
-                className="h-3 w-3 absolute left-0 top-1/2 transform -translate-y-1/2 translate-x-4"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="-60 -52 120 104"
-              >
-                <polygon
-                  points="50,0 25,43.3 -25,43.3 -50,0 -25,-43.3 25,-43.3"
-                  fill="#b49494"
-                />
-              </svg>
+            <div className="w-full h-[0.1rem] bg-[#b49494]"></div>
+            <svg
+              className="h-3 w-3 absolute left-0 top-1/2 transform -translate-y-1/2 translate-x-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="-60 -52 120 104"
+            >
+              <polygon
+                points="50,0 25,43.3 -25,43.3 -50,0 -25,-43.3 25,-43.3"
+                fill="#b49494"
+              />
+            </svg>
           </div>
           {/* Copyright */}
           <div className="text-xs text-gray-500 text-center px-4">

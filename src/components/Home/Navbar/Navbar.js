@@ -1,12 +1,28 @@
 // components/Navbar.jsx or .tsx
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Navbar() {
   return (
     <div className="navbar px-4 md:px-6">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">Sulio Art</a>
+        <a
+          className="btn btn-ghost text-lg md:text-xl text-left"
+          style={{ lineHeight: "1.1rem" }}
+        >
+          <Image
+            alt="User avatar"
+            src="/images/logo.png"
+            height={100}
+            width={100}
+            quality={100}
+            priority
+            className="h-full w-12 md:w-20 object-cover"
+          />
+          Sulio Art
+          <br />
+          Artist AI ChatBot
+        </a>
       </div>
       <div className="dropdown dropdown-end hidden md:block">
         <div
