@@ -60,7 +60,7 @@ export default function Testimonials() {
                   <CardContent className="relative z-10 h-full flex flex-col justify-center p-4 md:p-6">
                     <div className="text-center flex justify-center flex-col items-center">
                       <p className="text-sm md:text-base w-[80%] italic font-thin">
-                        "{testimonial.text}"
+                        &quot;{testimonial.text}&quot;
                       </p>
                       <p className="text-lg md:text-xl font-semibold mb-2">
                         ~{testimonial.author}
