@@ -33,7 +33,7 @@ export default function LandingPage() {
       {/* Main Content Container */}
       <div className="relative z-10 w-full max-w-4xl flex flex-col justify-center items-center pt-28 md:pt-16 px-4 md:px-8 lg:px-16">
         {/* Hero Card */}
-        <Card className="bg-gradient-to-r from-gray-900 to-black rounded-3xl text-white text-center mb-8 w-full border-none">
+        <Card className="bg-black rounded-3xl text-white text-center mb-8 w-full border-none">
           <CardContent className="p-6 lg:p-8">
             <h1 className="text-2xl lg:text-3xl font-bold mb-4">
               The all-in-one solution for artists to elevate their business with

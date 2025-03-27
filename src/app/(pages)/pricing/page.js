@@ -97,7 +97,7 @@ export default function Page() {
       <div className="bg-white text-black flex flex-col min-h-screen">
         <div className="bg-black text-white py-12 px-4 text-center">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-[#2823ff] inline-block text-sm rounded-full py-1 px-6 mb-4">
+            <div className="mt-20 bg-[#2823ff] inline-block text-sm rounded-full py-1 px-6 mb-4">
               Pricing
             </div>
             <h1 className="text-3xl font-bold mb-4">

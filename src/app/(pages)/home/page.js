@@ -1,6 +1,7 @@
 import LandingPage from "@/components/Home/FinalCallToActionSection/LandingPage";
 import FAQSection from "@/components/Home/FrequentlyAskedQuestionsSection/FAQSection";
 import Hero from "@/components/Home/HeroSection/Hero";
+import Navbar from "@/components/Home/Navbar/Navbar";
 import ProductDisplaySection from "@/components/Home/ProductDisplaySection/ProductDisplay";
 import MarketingStats from "@/components/Home/TestimonialsSection/MarketingStats";
 import VideoIntroduction from "@/components/Home/VideoIntroduction/VideoIntroduction";
@@ -8,12 +9,15 @@ import VideoIntroduction from "@/components/Home/VideoIntroduction/VideoIntroduc
 export default function Home() {
   return (
     <main>
-      <Hero/>
-      <ProductDisplaySection/>
-      <MarketingStats/>
-      <FAQSection/>
-      <VideoIntroduction/>
-      <LandingPage/>
+      <Navbar />
+      <div className="mt-20">
+      <Hero />
+      <ProductDisplaySection />
+      <MarketingStats />
+      <FAQSection />
+      <VideoIntroduction />
+      <LandingPage />
+      </div>
     </main>
   );
 }

@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 
 export default function Navbar() {
   return (
-    <div className="flex items-center justify-between px-4 py-4 md:px-6">
+    <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-6 bg-black">
       <div className="flex-1">
         <Button
           variant="ghost"
