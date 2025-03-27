@@ -1,3 +1,10 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 export default function FrequentlyAskedQuestions() {
   const faqData = [
     {
@@ -31,27 +38,27 @@ export default function FrequentlyAskedQuestions() {
         </div>
       </div>
       <div className="flex justify-center items-center overflow-y-auto h-full px-4 w-full">
-        <ul className="flex justify-evenly items-center flex-col w-full gap-6">
+        <Accordion type="single" collapsible className="w-full space-y-6">
           {faqData.map((faq, index) => (
-            <li 
+            <AccordionItem 
               key={`faq-${index}`} 
-              className="collapse collapse-arrow border-[rgb(180,148,148)] join-item border md:p-6"
+              value={`item-${index}`}
+              className="border border-[rgb(180,148,148)] rounded-lg px-6"
             >
-              <input type="radio" name="my-accordion-4" />
-              <div className="collapse-title text-md md:text-2xl font-medium text-justify">
+              <AccordionTrigger className="text-md md:text-2xl font-medium text-justify hover:no-underline">
                 {faq.question}
-              </div>
-              <div className="collapse-content">
+              </AccordionTrigger>
+              <AccordionContent>
                 <p className="text-md md:text-lg">
                   <span className="font-bold text-justify hyphens-auto [word-spacing:-0.1em]">
                     Answer:
                   </span>{" "}
                   {faq.answer}
                 </p>
-              </div>
-            </li>
+              </AccordionContent>
+            </AccordionItem>
           ))}
-        </ul>
+        </Accordion>
       </div>
     </div>
   );

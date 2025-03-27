@@ -1,13 +1,22 @@
 // components/Navbar.jsx or .tsx
 import Image from "next/image";
-import Link from "next/link";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 export default function Navbar() {
   return (
-    <div className="navbar px-4 md:px-6">
+    <div className="flex items-center justify-between px-4 py-4 md:px-6">
       <div className="flex-1">
-        <a
-          className="btn btn-ghost text-lg md:text-xl text-left"
+        <Button
+          variant="ghost"
+          className="text-lg md:text-xl text-left h-auto"
           style={{ lineHeight: "1.1rem" }}
         >
           <Image
@@ -19,45 +28,34 @@ export default function Navbar() {
             priority
             className="h-full w-12 md:w-20 object-cover"
           />
-          Sulio Art
-          <br />
-          Artist AI ChatBot
-        </a>
-      </div>
-      <div className="dropdown dropdown-end hidden md:block">
-        <div
-          tabIndex={0}
-          role="button"
-          className="btn btn-ghost btn-circle avatar"
-        >
-          <div className="relative w-10 h-10 rounded-full overflow-hidden">
-            <Image
-              alt="User avatar"
-              src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-              fill
-              sizes="40px"
-              priority
-              className="object-cover"
-            />
+          <div className="flex flex-col items-start">
+            <span>Sulio Art</span>
+            <span>Artist AI ChatBot</span>
           </div>
-        </div>
-        <ul
-          tabIndex={0}
-          className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-        >
-          <li>
-            <a className="justify-between">
+        </Button>
+      </div>
+      <div className="hidden md:block">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" className="relative h-10 w-10 rounded-full">
+              <Avatar>
+                <AvatarImage
+                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                  alt="User avatar"
+                />
+                <AvatarFallback>U</AvatarFallback>
+              </Avatar>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-52">
+            <DropdownMenuItem className="flex justify-between">
               Profile
-              <span className="badge">New</span>
-            </a>
-          </li>
-          <li>
-            <a>Settings</a>
-          </li>
-          <li>
-            <a>Logout</a>
-          </li>
-        </ul>
+              <Badge variant="secondary" className="ml-2">New</Badge>
+            </DropdownMenuItem>
+            <DropdownMenuItem>Settings</DropdownMenuItem>
+            <DropdownMenuItem>Logout</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </div>
   );

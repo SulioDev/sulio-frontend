@@ -1,4 +1,6 @@
 import Image from "next/image"
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 
 function FeatureList({ features, color = "blue" }) {
   const diamondColors = {
@@ -32,103 +34,101 @@ function Section({ title, description, features, color, imageSrc, layout = "top"
   const getMobileContent = () => {
     return (
       <>
-        <div className={`${bgColors[color]} rounded-full px-4 py-2 md:px-6 md:py-3 border-none`}>
+        <Badge variant="outline" className={`${bgColors[color]} rounded-full px-4 py-2 md:px-6 md:py-3 border-none hover:${bgColors[color]}`}>
           <h2 className="text-white text-lg md:text-xl font-medium text-center">{title}</h2>
-        </div>
+        </Badge>
         <p className="text-gray-400 font-medium text-base md:text-lg leading-relaxed text-center">
           {description}
         </p>
       </>
     );
   };
-    const getTabletAndDesktopContent = (layout) => {
-      const titleFontSize = "text-[1.2rem] md:text-[1.6rem]"; // Adjust title size for tablet
-      const descriptionFontSize = "text-gray-400 text-lg leading-relaxed tracking-tight text-justify hyphens-auto [word-spacing:-1.5px] [letter-spacing:-0.3px] [text-align-last:left] max-w-prose";
-      const paddingX = "px-4 md:px-6"; // Adjust horizontal padding for tablet
 
-      switch (layout) {
-        case 'top':
-          return (
-            <>
-              <div className={`${bgColors[color]} rounded-l-full ${paddingX} py-2 md:py-3 border-none`}>
-                <h2 className={`text-white ${titleFontSize} h-12 md:h-16 font-medium text-center flex justify-center items-center`}>{title}</h2>
-              </div>
-              <p className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}>
-                {description}
-              </p>
-            </>
-          );
-        case 'top-middle-center':
-          return (
-            <>
-              <div className={`${bgColors[color]} rounded-l-full ${paddingX} py-2 md:py-3 border-none`}>
-                <h2 className={`text-white ${titleFontSize} h-12 md:h-16 font-medium text-center flex justify-center items-center`}>{title}</h2>
-              </div>
-              <p className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}>
-                {description}
-              </p>
-            </>
-          );
-        case 'middle':
-          return (
-            <>
-              <p className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}>
-                {description.slice(0, description.length / 2 - 1)}
-              </p>
-              <div className={`${bgColors[color]} rounded-l-full ${paddingX} py-2 md:py-3 border-none`}>
-                <h2 className={`text-white ${titleFontSize} h-12 md:h-16 font-medium text-center flex justify-center items-center`}>{title}</h2>
-              </div>
-              <p className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}>
-                {description.slice(description.length / 2 - 1, description.length)}
-              </p>
-            </>
-          );
-        case 'bottom-middle-center':
-          return (
-            <>
-              <p className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}>
-                {description}
-              </p>
-              <div className={`${bgColors[color]} rounded-l-full ${paddingX} py-2 md:py-3 border-none`}>
-                <h2 className={`text-white ${titleFontSize} h-12 md:h-16 font-medium text-center flex justify-center items-center`}>{title}</h2>
-              </div>
-            </>
-          );
-        case 'bottom':
-          return (
-            <>
-              <p className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}>
-                {description}
-              </p>
-              <div className={`${bgColors[color]} rounded-l-full ${paddingX} py-2 md:py-3 border-none`}>
-                <h2 className={`text-white ${titleFontSize} h-12 md:h-16 font-medium text-center flex justify-center items-center`}>{title}</h2>
-              </div>
-            </>
-          );
-          default:
-            return null;
-      }
+  const getTabletAndDesktopContent = (layout) => {
+    const titleFontSize = "text-[1.2rem] md:text-[1.6rem]";
+    const descriptionFontSize = "text-gray-400 text-lg leading-relaxed tracking-tight text-justify hyphens-auto [word-spacing:-1.5px] [letter-spacing:-0.3px] [text-align-last:left] max-w-prose";
+    const paddingX = "px-4 md:px-6";
+
+    const renderTitle = () => (
+      <Badge variant="outline" className={`${bgColors[color]} rounded-l-full ${paddingX} py-2 md:py-3 border-none hover:${bgColors[color]}`}>
+        <h2 className={`text-white ${titleFontSize} h-12 md:h-16 font-medium text-center flex justify-center items-center`}>{title}</h2>
+      </Badge>
+    );
+
+    switch (layout) {
+      case 'top':
+        return (
+          <>
+            {renderTitle()}
+            <p className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}>
+              {description}
+            </p>
+          </>
+        );
+      case 'top-middle-center':
+        return (
+          <>
+            {renderTitle()}
+            <p className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}>
+              {description}
+            </p>
+          </>
+        );
+      case 'middle':
+        return (
+          <>
+            <p className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}>
+              {description.slice(0, description.length / 2 - 1)}
+            </p>
+            {renderTitle()}
+            <p className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}>
+              {description.slice(description.length / 2 - 1, description.length)}
+            </p>
+          </>
+        );
+      case 'bottom-middle-center':
+        return (
+          <>
+            <p className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}>
+              {description}
+            </p>
+            {renderTitle()}
+          </>
+        );
+      case 'bottom':
+        return (
+          <>
+            <p className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}>
+              {description}
+            </p>
+            {renderTitle()}
+          </>
+        );
+      default:
+        return null;
     }
-    const getTabletAndDesktopLayoutStyles = (layout) => {
-      switch (layout) {
-        case 'top':
-          return 'relative top-0 space-y-3 md:space-y-6';
-        case 'top-middle-center':
-          return 'relative top-1/4 space-y-3 md:space-y-6';
-        case 'middle':
-          return 'flex flex-col justify-center space-y-3 md:space-y-6';
-        case 'bottom-middle-center':
-          return 'flex flex-col justify-center space-y-3 md:space-y-6';
-        case 'bottom':
-          return 'flex flex-col justify-end space-y-3 md:space-y-6';
-        default:
-          return 'flex flex-col space-y-3 md:space-y-6';
-      }
+  }
+
+  const getTabletAndDesktopLayoutStyles = (layout) => {
+    switch (layout) {
+      case 'top':
+        return 'relative top-0 space-y-3 md:space-y-6';
+      case 'top-middle-center':
+        return 'relative top-1/4 space-y-3 md:space-y-6';
+      case 'middle':
+        return 'flex flex-col justify-center space-y-3 md:space-y-6';
+      case 'bottom-middle-center':
+        return 'flex flex-col justify-center space-y-3 md:space-y-6';
+      case 'bottom':
+        return 'flex flex-col justify-end space-y-3 md:space-y-6';
+      default:
+        return 'flex flex-col space-y-3 md:space-y-6';
     }
+  }
+
   return (
     <div className="h-screen w-full flex items-center">
       <div className="w-full h-full">
-        {/* Adjusted padding-top here to create space */}
         <h1 className="text-xl md:text-3xl font-bold text-white text-center md:hidden pt-12 py-3 md:py-5 px-4 md:px-10">
           A Seamless Creative Workflow Powered by AI
         </h1>
@@ -137,7 +137,6 @@ function Section({ title, description, features, color, imageSrc, layout = "top"
           <div className="flex flex-col items-center">
             {getMobileContent()}
           </div>
-          {/* Increased margin-top here to push content further down */}
           <div className="mt-6 md:mt-4">
             <FeatureList features={features} color={color} />
           </div>
@@ -151,10 +150,10 @@ function Section({ title, description, features, color, imageSrc, layout = "top"
             <div className={`md:col-span-1 ${getTabletAndDesktopLayoutStyles(layout)}`}>
               {getTabletAndDesktopContent(layout)}
             </div>
-            <div className="md:col-span-3 bg-white grid grid-cols-1 md:grid-cols-2 border-none">
-              <div className="h-full flex items-center">
+            <Card className="md:col-span-3 bg-white grid grid-cols-1 md:grid-cols-2 border-none">
+              <CardContent className="h-full flex items-center p-0">
                 <FeatureList features={features} color={color} />
-              </div>
+              </CardContent>
               <div className="relative h-full">
                 <Image
                   src={imageSrc || "/placeholder.svg"}
@@ -166,7 +165,7 @@ function Section({ title, description, features, color, imageSrc, layout = "top"
                   quality={90}
                 />
               </div>
-            </div>
+            </Card>
           </div>
         </div>
       </div>
@@ -187,7 +186,7 @@ export default function ProductDisplaySection() {
       ],
       color: "blue",
       imageSrc: "/images/section21.gif",
-      layout: "top"  // Title at top, description below
+      layout: "top"
     },
     {
       title: "Smart Art Recommendations",
@@ -213,7 +212,7 @@ export default function ProductDisplaySection() {
       ],
       color: "yellow",
       imageSrc: "/images/section23.gif",
-      layout: "middle"  // Title at bottom
+      layout: "middle"
     },
     {
       title: "Fraud Detection",
@@ -226,7 +225,7 @@ export default function ProductDisplaySection() {
       ],
       color: "orange",
       imageSrc: "/images/section24.gif",
-      layout: "bottom-middle-center"  // Title at bottom
+      layout: "bottom-middle-center"
     },
     {
       title: "Streamlined Client Communication",
@@ -239,7 +238,7 @@ export default function ProductDisplaySection() {
       ],
       color: "green",
       imageSrc: "/images/section25.gif",
-      layout: "bottom"  // Title at bottom
+      layout: "bottom"
     }
   ]
 

@@ -1,4 +1,3 @@
-import Navbar from "../components/Home/Navbar/Navbar";
 import { sora } from './fonts'
 import './globals.css';
 
@@ -9,9 +8,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`bg-black text-white ${sora.variable} font-sans`}>
-        <Navbar/>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${sora.variable} font-sans bg-black text-white`}>
         {children}
       </body>
     </html>
