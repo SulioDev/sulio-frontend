@@ -1,4 +1,4 @@
-import Navbar from "@/components/Home/Navbar/Navbar"
+import Navbar from "@/components/Navbar/Navbar"
 
 export default function PricingLayout({ children }) {
   return (

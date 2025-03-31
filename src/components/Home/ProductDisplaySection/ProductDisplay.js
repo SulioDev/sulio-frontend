@@ -1,6 +1,6 @@
-import Image from "next/image"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import Image from "next/image";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 function FeatureList({ features, color = "blue" }) {
   const diamondColors = {
@@ -9,96 +9,162 @@ function FeatureList({ features, color = "blue" }) {
     yellow: "text-yellow-500",
     orange: "text-orange-500",
     green: "text-green-500",
-  }
+  };
 
   return (
     <div className="space-y-3 md:space-y-4 py-3 md:py-4 h-full md:flex flex-col justify-evenly px-4 md:px-8">
       {features.map((feature, index) => (
         <div key={index} className="flex gap-2">
-          <div className={`${diamondColors[color]} md:text-3xl text-xl flex-shrink-0 mt-1`}>◆</div>
-          <p className="text-black font-medium leading-tight text-sm md:text-xl lg:text-2xl">{feature}</p>
+          <div
+            className={`${diamondColors[color]} md:text-3xl text-xl flex-shrink-0 mt-1`}
+          >
+            ◆
+          </div>
+          <p className="text-black font-medium leading-tight text-sm md:text-xl lg:text-2xl">
+            {feature}
+          </p>
         </div>
       ))}
     </div>
-  )
+  );
 }
 
-function Section({ title, description, features, color, imageSrc, layout = "top" }) {
+function Section({
+  title,
+  description,
+  features,
+  color,
+  imageSrc,
+  layout = "top",
+}) {
   const bgColors = {
     blue: "bg-blue-600",
     purple: "bg-purple-600",
     yellow: "bg-yellow-500",
     orange: "bg-orange-500",
     green: "bg-green-500",
-  }
+  };
+  const diamondColors = {
+    blue: "text-blue-600",
+    purple: "text-purple-600",
+    yellow: "text-yellow-500",
+    orange: "text-orange-500",
+    green: "text-green-500",
+  };
+
+  // Mobile layout content (resembling the screenshot image)
   const getMobileContent = () => {
     return (
-      <>
-        <Badge variant="outline" className={`${bgColors[color]} rounded-full px-4 py-2 md:px-6 md:py-3 border-none hover:${bgColors[color]}`}>
-          <h2 className="text-white text-lg md:text-xl font-medium text-center">{title}</h2>
-        </Badge>
-        <p className="text-gray-400 font-medium text-base md:text-lg leading-relaxed text-center">
+      <div className="bg-white rounded-3xl shadow-lg p-6 max-w-[90%] mx-auto">
+        <div className="text-center mb-6">
+          <Badge
+            variant="outline"
+            className={`${bgColors[color]} rounded-full px-4 py-2 border-none hover:${bgColors[color]}`}
+          >
+            <h2 className="text-white text-xl font-medium">{title}</h2>
+          </Badge>
+        </div>
+
+        <p className="text-gray-800 font-medium text-base mb-8 leading-relaxed text-center">
           {description}
         </p>
-      </>
+
+        <div className="space-y-4">
+          {features.map((feature, index) => (
+            <div key={index} className="flex gap-2">
+              <div
+                className={`${diamondColors[color]} md:text-3xl text-xl flex-shrink-0 mt-1`}
+              >
+                ◆
+              </div>
+              <p className="text-black font-medium leading-tight text-sm md:text-xl lg:text-2xl">
+                {feature}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
     );
   };
 
   const getTabletAndDesktopContent = (layout) => {
     const titleFontSize = "text-[1.2rem] md:text-[1.6rem]";
-    const descriptionFontSize = "text-gray-400 text-lg leading-relaxed tracking-tight text-justify hyphens-auto [word-spacing:-1.5px] [letter-spacing:-0.3px] [text-align-last:left] max-w-prose";
+    const descriptionFontSize =
+      "text-gray-400 text-lg leading-relaxed tracking-tight text-justify hyphens-auto [word-spacing:-1.5px] [letter-spacing:-0.3px] [text-align-last:left] max-w-prose";
     const paddingX = "px-4 md:px-6";
 
     const renderTitle = () => (
-      <Badge variant="outline" className={`${bgColors[color]} rounded-l-full ${paddingX} py-2 md:py-3 border-none hover:${bgColors[color]}`}>
-        <h2 className={`text-white ${titleFontSize} h-12 md:h-16 font-medium text-center flex justify-center items-center`}>{title}</h2>
+      <Badge
+        variant="outline"
+        className={`${bgColors[color]} rounded-l-full ${paddingX} py-2 md:py-3 border-none hover:${bgColors[color]}`}
+      >
+        <h2
+          className={`text-white ${titleFontSize} h-12 md:h-16 font-medium text-center flex justify-center items-center`}
+        >
+          {title}
+        </h2>
       </Badge>
     );
 
     switch (layout) {
-      case 'top':
+      case "top":
         return (
           <>
             {renderTitle()}
-            <p className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}>
+            <p
+              className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}
+            >
               {description}
             </p>
           </>
         );
-      case 'top-middle-center':
+      case "top-middle-center":
         return (
           <>
             {renderTitle()}
-            <p className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}>
+            <p
+              className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}
+            >
               {description}
             </p>
           </>
         );
-      case 'middle':
+      case "middle":
         return (
           <>
-            <p className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}>
+            <p
+              className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}
+            >
               {description.slice(0, description.length / 2 - 1)}
             </p>
             {renderTitle()}
-            <p className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}>
-              {description.slice(description.length / 2 - 1, description.length)}
+            <p
+              className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}
+            >
+              {description.slice(
+                description.length / 2 - 1,
+                description.length
+              )}
             </p>
           </>
         );
-      case 'bottom-middle-center':
+      case "bottom-middle-center":
         return (
           <>
-            <p className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}>
+            <p
+              className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}
+            >
               {description}
             </p>
             {renderTitle()}
           </>
         );
-      case 'bottom':
+      case "bottom":
         return (
           <>
-            <p className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}>
+            <p
+              className={`text-gray-400 font-medium ${descriptionFontSize} ${paddingX} leading-relaxed`}
+            >
               {description}
             </p>
             {renderTitle()}
@@ -107,47 +173,53 @@ function Section({ title, description, features, color, imageSrc, layout = "top"
       default:
         return null;
     }
-  }
+  };
 
   const getTabletAndDesktopLayoutStyles = (layout) => {
     switch (layout) {
-      case 'top':
-        return 'relative top-0 space-y-3 md:space-y-6';
-      case 'top-middle-center':
-        return 'relative top-1/4 space-y-3 md:space-y-6';
-      case 'middle':
-        return 'flex flex-col justify-center space-y-3 md:space-y-6';
-      case 'bottom-middle-center':
-        return 'flex flex-col justify-center space-y-3 md:space-y-6';
-      case 'bottom':
-        return 'flex flex-col justify-end space-y-3 md:space-y-6';
+      case "top":
+        return "relative top-0 space-y-3 md:space-y-6";
+      case "top-middle-center":
+        return "relative top-1/4 space-y-3 md:space-y-6";
+      case "middle":
+        return "flex flex-col justify-center space-y-3 md:space-y-6";
+      case "bottom-middle-center":
+        return "flex flex-col justify-center space-y-3 md:space-y-6";
+      case "bottom":
+        return "flex flex-col justify-end space-y-3 md:space-y-6";
       default:
-        return 'flex flex-col space-y-3 md:space-y-6';
+        return "flex flex-col space-y-3 md:space-y-6";
     }
-  }
+  };
 
   return (
-    <div className="h-screen w-full flex items-center">
+    <div className="min-h-screen w-full flex items-center">
       <div className="w-full h-full">
         <h1 className="text-xl md:text-3xl font-bold text-white text-center md:hidden pt-12 py-3 md:py-5 px-4 md:px-10">
           A Seamless Creative Workflow Powered by AI
         </h1>
-        {/* Mobile Layout */}
-        <div className="md:hidden px-3 py-6 md:px-4 md:py-8 space-y-3 md:space-y-4 relative">
-          <div className="flex flex-col items-center">
-            {getMobileContent()}
-          </div>
-          <div className="mt-6 md:mt-4">
-            <FeatureList features={features} color={color} />
-          </div>
+        <div
+          className="md:hidden min-h-screen flex flex-col justify-center py-10 px-4 relative"
+          style={{
+            backgroundImage: `url(${imageSrc})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          <div className="absolute inset-0 bg-black opacity-50"></div>
+          <div className="relative z-10">{getMobileContent()}</div>
         </div>
+
         {/* Desktop Layout */}
         <div className="hidden md:block h-screen">
           <h1 className="text-4xl lg:text-5xl font-bold text-white text-center py-6 md:py-10">
             A Seamless Creative Workflow Powered by AI
           </h1>
           <div className="grid md:grid-cols-4 pb-20 md:pb-40 pl-10 md:pl-20 h-full">
-            <div className={`md:col-span-1 ${getTabletAndDesktopLayoutStyles(layout)}`}>
+            <div
+              className={`md:col-span-1 ${getTabletAndDesktopLayoutStyles(layout)}`}
+            >
               {getTabletAndDesktopContent(layout)}
             </div>
             <Card className="md:col-span-3 bg-white grid grid-cols-1 md:grid-cols-2 border-none">
@@ -170,7 +242,7 @@ function Section({ title, description, features, color, imageSrc, layout = "top"
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default function ProductDisplaySection() {
@@ -186,7 +258,7 @@ export default function ProductDisplaySection() {
       ],
       color: "blue",
       imageSrc: "/images/section21.gif",
-      layout: "top"
+      layout: "top",
     },
     {
       title: "Smart Art Recommendations",
@@ -199,7 +271,7 @@ export default function ProductDisplaySection() {
       ],
       color: "purple",
       imageSrc: "/images/section22.gif",
-      layout: "top-middle-center"
+      layout: "top-middle-center",
     },
     {
       title: "Transaction Tracking",
@@ -212,7 +284,7 @@ export default function ProductDisplaySection() {
       ],
       color: "yellow",
       imageSrc: "/images/section23.gif",
-      layout: "middle"
+      layout: "middle",
     },
     {
       title: "Fraud Detection",
@@ -225,7 +297,7 @@ export default function ProductDisplaySection() {
       ],
       color: "orange",
       imageSrc: "/images/section24.gif",
-      layout: "bottom-middle-center"
+      layout: "bottom-middle-center",
     },
     {
       title: "Streamlined Client Communication",
@@ -238,9 +310,9 @@ export default function ProductDisplaySection() {
       ],
       color: "green",
       imageSrc: "/images/section25.gif",
-      layout: "bottom"
-    }
-  ]
+      layout: "bottom",
+    },
+  ];
 
   return (
     <div className="relative">
@@ -250,5 +322,5 @@ export default function ProductDisplaySection() {
         </div>
       ))}
     </div>
-  )
+  );
 }
