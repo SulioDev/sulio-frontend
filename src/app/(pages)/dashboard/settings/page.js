@@ -170,7 +170,7 @@ export default function SettingsPage() {
                       </div>
                       
                       <div className="col-span-1 md:col-span-2 space-y-2">
-                        <p className="text-sm text-gray-500">Leave the fields below empty if you don't want to change your password</p>
+                        <p className="text-sm text-gray-500">Leave the fields below empty if you don&apos;t want to change your password</p>
                       </div>
                       
                       <div className="space-y-2">

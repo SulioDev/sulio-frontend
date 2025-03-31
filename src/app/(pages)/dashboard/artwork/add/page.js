@@ -207,7 +207,7 @@ export default function AddArtworkPage() {
                           value={tagInput}
                           onChange={(e) => setTagInput(e.target.value)}
                           onKeyDown={(e) => {
-                            if (e.key === 'Enter') {
+                            if (e.key === "Enter") {
                               e.preventDefault()
                               handleAddTag()
                             }

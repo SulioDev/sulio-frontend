@@ -47,7 +47,7 @@ export default function ChatbotPage() {
       id: messages.length + 1,
       role: "user",
       content: inputValue,
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
     }
     
     setMessages(prev => [...prev, userMessage])
@@ -69,7 +69,7 @@ export default function ChatbotPage() {
         id: messages.length + 2,
         role: "bot",
         content: randomResponse,
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
       }
       
       setMessages(prev => [...prev, botMessage])

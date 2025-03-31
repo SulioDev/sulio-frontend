@@ -9,7 +9,7 @@ export function DashboardWelcome() {
       <div>
         <h1 className="text-2xl md:text-3xl font-semibold text-gray-900">Welcome back, Artist!</h1>
         <p className="text-gray-600 mt-1 md:mt-2">
-          Here's what's happening with your art business today
+          Here&apos;s what&apos;s happening with your art business today
         </p>
       </div>
       
