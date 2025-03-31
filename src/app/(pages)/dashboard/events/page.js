@@ -317,7 +317,7 @@ export default function EventsPage() {
                           </span>
                           <div className="flex items-center text-xs text-gray-500">
                             <Users className="h-3 w-3 mr-1" />
-                            {event.attendees} {event.attendees === 1 ? 'attendee' : 'attendees'}
+                            {event.attendees} {event.attendees === 1 ? "attendee" : "attendees"}
                           </div>
                         </div>
                         

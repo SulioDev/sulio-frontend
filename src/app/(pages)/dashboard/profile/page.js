@@ -127,7 +127,7 @@ export default function ProfilePage() {
               <Avatar className="h-24 w-24 border-4 border-white">
                 <AvatarImage src={artistProfile.avatar} alt={artistProfile.name} />
                 <AvatarFallback className="bg-purple-500 text-white text-xl">
-                  {artistProfile.name.split(' ').map(n => n[0]).join('')}
+                  {artistProfile.name.split(" ").map(n => n[0]).join("")}
                 </AvatarFallback>
               </Avatar>
               <div className="ml-4 mb-2">
@@ -187,22 +187,22 @@ export default function ProfilePage() {
                       
                       <h3 className="font-medium text-sm text-gray-500 uppercase mb-3">Social Links</h3>
                       <div className="grid grid-cols-2 gap-3">
-                        <a href={`https://${artistProfile.socialLinks.instagram}`} target="_blank" rel="noopener noreferrer" 
+                        <a href={"https://" + artistProfile.socialLinks.instagram} target="_blank" rel="noopener noreferrer" 
                            className="flex items-center text-sm hover:text-purple-600">
                           <Instagram className="h-4 w-4 mr-2" />
                           Instagram
                         </a>
-                        <a href={`https://${artistProfile.socialLinks.twitter}`} target="_blank" rel="noopener noreferrer"
+                        <a href={"https://" + artistProfile.socialLinks.twitter} target="_blank" rel="noopener noreferrer"
                            className="flex items-center text-sm hover:text-purple-600">
                           <Twitter className="h-4 w-4 mr-2" />
                           Twitter
                         </a>
-                        <a href={`https://${artistProfile.socialLinks.facebook}`} target="_blank" rel="noopener noreferrer"
+                        <a href={"https://" + artistProfile.socialLinks.facebook} target="_blank" rel="noopener noreferrer"
                            className="flex items-center text-sm hover:text-purple-600">
                           <Facebook className="h-4 w-4 mr-2" />
                           Facebook
                         </a>
-                        <a href={`https://${artistProfile.socialLinks.website}`} target="_blank" rel="noopener noreferrer"
+                        <a href={"https://" + artistProfile.socialLinks.website} target="_blank" rel="noopener noreferrer"
                            className="flex items-center text-sm hover:text-purple-600">
                           <LinkIcon className="h-4 w-4 mr-2" />
                           Website
@@ -438,7 +438,7 @@ export default function ProfilePage() {
                             <span className="font-medium">42%</span>
                           </div>
                           <div className="w-full bg-gray-200 rounded-full h-2">
-                            <div className="bg-purple-600 h-2 rounded-full" style={{ width: '42%' }}></div>
+                            <div className="bg-purple-600 h-2 rounded-full" style={{ width: "42%" }}></div>
                           </div>
                           
                           <div className="flex items-center justify-between mt-3">
@@ -446,7 +446,7 @@ export default function ProfilePage() {
                             <span className="font-medium">18%</span>
                           </div>
                           <div className="w-full bg-gray-200 rounded-full h-2">
-                            <div className="bg-purple-600 h-2 rounded-full" style={{ width: '18%' }}></div>
+                            <div className="bg-purple-600 h-2 rounded-full" style={{ width: "18%" }}></div>
                           </div>
                           
                           <div className="flex items-center justify-between mt-3">
@@ -454,7 +454,7 @@ export default function ProfilePage() {
                             <span className="font-medium">15%</span>
                           </div>
                           <div className="w-full bg-gray-200 rounded-full h-2">
-                            <div className="bg-purple-600 h-2 rounded-full" style={{ width: '15%' }}></div>
+                            <div className="bg-purple-600 h-2 rounded-full" style={{ width: "15%" }}></div>
                           </div>
                           
                           <div className="flex items-center justify-between mt-3">
@@ -462,7 +462,7 @@ export default function ProfilePage() {
                             <span className="font-medium">12%</span>
                           </div>
                           <div className="w-full bg-gray-200 rounded-full h-2">
-                            <div className="bg-purple-600 h-2 rounded-full" style={{ width: '12%' }}></div>
+                            <div className="bg-purple-600 h-2 rounded-full" style={{ width: "12%" }}></div>
                           </div>
                         </div>
                       </div>
