@@ -9,9 +9,9 @@ export default function NotFound() {
         <h2 className="text-3xl font-semibold mb-4">Lost in Space</h2>
         <p className="text-gray-600 mb-8">Sorry, we couldn't find the page you were looking for.</p>
         <Link href="/">
-          <a className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
+          <div className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
             Return Home
-          </a>
+          </div>
         </Link>
       </div>
     </div>
